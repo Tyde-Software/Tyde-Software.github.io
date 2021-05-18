@@ -53,13 +53,13 @@ function Menu(props) {
         <Grid container item xs={2} justify="center">
             <Toolbar>
               <Anime easing="linear" duration={1000} delay={600} opacity={op}>
-                <Button onClick={() => props.onClick({option: 1})} className={classes.menuButton}>About</Button>
+                <Button onClick={props.onClick} className={classes.menuButton}>About</Button>
               </Anime>
               <Anime easing="linear" duration={1000} delay={1000} opacity={op}>
-                <Button onClick={() => props.onClick({option: 2})} className={classes.menuButton}>Contact</Button>
+                <Button onClick={props.onClick} className={classes.menuButton}>Contact</Button>
               </Anime>
               <Anime easing="linear" duration={1000} delay={1400} opacity={op}>
-                <Button onClick={() => props.onClick({option: 3})} className={classes.menuButton}>Projects</Button>
+                <Button onClick={props.onClick} className={classes.menuButton}>Projects</Button>
               </Anime>
             </Toolbar>
         </Grid>
@@ -72,20 +72,20 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      option: 0,
+      option: false,
     }
   }
   
   render() {
     return (
       <Container class="App" maxWidth="false" style={{backgroundColor: '#5f7799', minHeight: '100vh', maxHeight: '100vh', position: 'relative'}}>
-        {this.state.option==0 ? (
-          <Menu onClick={() => this.setState()} click={false}/>
+        {this.state.option==false ? (
+          <Menu onClick={() => this.setState({option: true})} click={false}/>
           )
         :
         (
           <Anime autoplay={true} translateX={[0, '-35vw']} duration={5000}>
-            <Menu onClick={() => this.setState()} click={true}/>
+            <Menu onClick={() => this.setState({option: true})} click={true}/>
           </Anime>
         )}
       </Container>
