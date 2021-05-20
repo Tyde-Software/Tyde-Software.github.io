@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.610b40ea.chunk.css",
-    "main.js": "/static/js/main.f150e96f.chunk.js",
-    "main.js.map": "/static/js/main.f150e96f.chunk.js.map",
+    "main.css": "/static/css/main.7a29bde5.chunk.css",
+    "main.js": "/static/js/main.b9a2cc63.chunk.js",
+    "main.js.map": "/static/js/main.b9a2cc63.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.7d223e93.js",
     "runtime-main.js.map": "/static/js/runtime-main.7d223e93.js.map",
     "static/js/2.2c73cf14.chunk.js": "/static/js/2.2c73cf14.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.0b63749a.chunk.js": "/static/js/3.0b63749a.chunk.js",
     "static/js/3.0b63749a.chunk.js.map": "/static/js/3.0b63749a.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.610b40ea.chunk.css.map": "/static/css/main.610b40ea.chunk.css.map",
+    "static/css/main.7a29bde5.chunk.css.map": "/static/css/main.7a29bde5.chunk.css.map",
     "static/js/2.2c73cf14.chunk.js.LICENSE.txt": "/static/js/2.2c73cf14.chunk.js.LICENSE.txt",
     "static/media/index.css": "/static/media/Now-Regular.75a37ab5.otf",
     "static/media/brenden.fac992bc.jpg": "/static/media/brenden.fac992bc.jpg",
@@ -20,7 +20,7 @@
   "entrypoints": [
     "static/js/runtime-main.7d223e93.js",
     "static/js/2.2c73cf14.chunk.js",
-    "static/css/main.610b40ea.chunk.css",
-    "static/js/main.f150e96f.chunk.js"
+    "static/css/main.7a29bde5.chunk.css",
+    "static/js/main.b9a2cc63.chunk.js"
   ]
 }
