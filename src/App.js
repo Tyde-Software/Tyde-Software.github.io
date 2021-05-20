@@ -12,15 +12,17 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  ClickAwayListener,
   Container,
   Drawer,
   Grid,
   Hidden,
   IconButton,
-  Link,
   Toolbar,
   Typography
 } from '@material-ui/core';
+
+import { Link } from "react-scroll";
 
 import logo from './assets/img/logo.png';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -37,6 +39,9 @@ let theme = createMuiTheme();
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+  },
+  drawer: {
+    backgroundColor: '#5f7799',
   },
   menuButton: {
     marginLeft: theme.spacing(1),
@@ -160,13 +165,14 @@ function About() {
   );
 }
 
-function Contact() {
+function Contact(props) {
   return (
     <Container maxWidth="false">
       <Grid container justify="center" spacing={2}>
-        <Grid item xs={12}>
+        {props.title=="true" ? 
+        (<Grid item xs={12}>
           <Typography variant="h2"><Box letterSpacing='3px' color='white'>CONTACT US</Box></Typography>
-        </Grid>
+        </Grid>) : null}
         <Grid item xs={12}>
           <IconButton><MailOutlineIcon style={{color: 'white'}} fontSize="large"/></IconButton>
           <IconButton><LinkedInIcon style={{color: 'white'}} fontSize="large"/></IconButton>
@@ -241,39 +247,75 @@ function Content(props) {
   }
 
   if (props.option == 1) {
-    output = <About/>;
+    return (
+      <Anime easing="linear" duration={1000} opacity={op} complete={props.complete}>
+        <About/>
+      </Anime>
+    );
   }
   else if (props.option == 2) {
-    output = <Contact/>
+    return (
+      <Anime easing="linear" duration={1000} opacity={op} complete={props.complete}>
+        <Contact title="true"/>
+      </Anime>
+    );
   }
   else if (props.option == 3) {
-    output = <Projects/>
+    return (
+      <Anime easing="linear" duration={1000} opacity={op} complete={props.complete}>
+        <Projects/>
+      </Anime>
+    );
   }
   else {
-    output = <Container>NULL</Container>;
+    return (
+      <Anime easing="linear" duration={1000} opacity={op} complete={props.complete}>
+        <Container>NULL</Container>
+      </Anime>
+    );
   }
 
-  return (
-    <Anime easing="linear" duration={1000} opacity={op} complete={props.complete}>
-      {output}
-    </Anime>
-  )
 }
 
 function MobileMenu() {
 
+  const [open, setOpen] = React.useState(false);
+  const classes = useStyles();
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <AppBar elevation={0} style={{backgroundColor: '#5f7799'}}>
-      <Toolbar style={{justifyContent: 'space-between'}}>
-        <IconButton edge="start" color="inherit" aria-label="menu">
-          <MenuIcon style={{color: 'white'}}/>
-        </IconButton>
-        <Typography variant="h3">
-          Tyde Software
-        </Typography>
-        <IconButton disabled={true}/>
-      </Toolbar>
-    </AppBar>
+    <>
+      <AppBar elevation={0} style={{background: '#5f7799'}}>
+        <Toolbar style={{justifyContent: 'space-between'}}>
+          <IconButton edge="start" color="inherit" onClick={handleDrawerOpen} aria-label="menu">
+            <MenuIcon style={{color: 'white'}}/>
+          </IconButton>
+          <Typography variant="h3">
+            Tyde Software
+          </Typography>
+          <IconButton disabled={true}/>
+        </Toolbar>
+      </AppBar>
+      <Drawer open={open} classes={{paper: classes.drawer}} onClose={handleDrawerClose}>
+        <img src={logo} style={{height: '250px', width: '250px'}}/>
+        <Container align="center">
+          <Contact title="false"/>
+          <Container style={{height: '50px'}}/>
+          <Link to="about" smooth={true} style={{ textDecoration: 'none' }}><Button onClick={handleDrawerClose}><Typography variant="h5"><Box letterSpacing='3px' color='white'>About</Box></Typography></Button></Link>
+          <Container style={{height: '10px'}}/>
+          <Link to="contact" smooth={true} style={{ textDecoration: 'none' }}><Button onClick={handleDrawerClose}><Typography variant="h5"><Box letterSpacing='3px' color='white'>Contact</Box></Typography></Button></Link>
+          <Container style={{height: '10px'}}/>
+          <Link to="projects" smooth={true} style={{ textDecoration: 'none' }}><Button onClick={handleDrawerClose}><Typography variant="h5"><Box letterSpacing='3px' color='white'>Projects</Box></Typography></Button></Link>
+        </Container>
+      </Drawer>
+    </>
   );
 }
 
@@ -299,9 +341,10 @@ class App extends React.Component {
   }
   
   render() {
+    document.body.style = 'background: #5f7799;';
     return (
       <ThemeProvider theme={theme}>
-        <Container class="App" maxWidth="false" style={{backgroundColor: '#5f7799', minHeight: '100vh', position: 'relative'}}>
+        <Container class="App" maxWidth="false" style={{backgroundColor: '#5f7799', minHeight: '100vh', maxWidth: '100vw', position: 'relative'}}>
 
           {/* Desktop */}
           
@@ -327,7 +370,7 @@ class App extends React.Component {
                 <Grid item md={6} style={{height: '100vh'}}>
                   <Grid container align="center" justify="center" direction="column" style={{height: '100vh'}}>
                     <Grid item>
-                      {this.state.prev==0 ? (
+                      {/* {this.state.prev==0 ? (
                         <Content option={this.state.option} direction="in" complete={null}/>
                       ) : (
                         <>{this.state.rendering==true ? (
@@ -335,7 +378,8 @@ class App extends React.Component {
                         ) : (
                           <Content option={this.state.option} direction="in" complete={null}/>
                         )} </>
-                      )}
+                      )} */}
+                      <Content option={this.state.option} direction="in" complete={null}/>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -348,16 +392,18 @@ class App extends React.Component {
 
           <Hidden mdUp>
             <MobileMenu/>
-            <Container style={{height: 80}}/>
-            <a id="about"/>
-            <About/>
-            <Container style={{height: 150}}/>
-            <a id="projects"/>
-            <Projects/>
-            <Container style={{height: 150}}/>
-            <a id="contact"/>
-            <Contact/>
-            <Container style={{height: 150}}/>
+            <Container maxWidth="sm">
+              <a id="about"/>
+              <Container style={{height: 80}}/>
+              <About/>
+              <a id="contact"/>
+              <Container style={{height: 150}}/>
+              <Contact title="true"/>
+              <a id="projects"/>
+              <Container style={{height: 150}}/>
+              <Projects/>
+              <Container style={{height: 150}}/>
+            </Container>
           </Hidden>
         </Container>
       </ThemeProvider>
