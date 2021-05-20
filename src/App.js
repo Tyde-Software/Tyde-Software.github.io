@@ -98,7 +98,7 @@ function About() {
         </Grid>
 
         {/* Brenden Smith */}
-        <Hidden xs>
+        <Hidden xsDown>
           <Grid item container sm={6} justify="center">
             <Avatar src={Brenden} style={{height: '250px', width: '250px'}}/>
           </Grid>
@@ -124,6 +124,37 @@ function About() {
             <Typography variant="body1"><Box color="white">Software engineer with multiple experiences to support the community. Willing to take any opportunities to improve her skills and knowledge that is applicable to the world. Project-based experience includes with mobile development, web development, and robotics. Several languages that she knows are Python, Java, and Dart.</Box></Typography>
           </Grid>
         </Hidden> 
+
+        <Hidden smUp>
+          <Grid item container justify="center">
+            <Avatar src={Brenden} style={{height: '250px', width: '250px'}}/>
+          </Grid>
+          <Grid item container justify="center">
+            <Typography variant="h3"><Box letterSpacing='3px' color='white'>BRENDEN SMITH</Box></Typography>
+          </Grid>
+          <Grid item container justify="center">
+            <Typography variant="body1"><Box color="white">Diligent and hardworking software engineer with programming, collaboration, and leadership experience. Motivated and enthusiastic about diving into the deeper concepts of the field and applying them in a practical way to change the world. Project-based experience in iOS and Android development, web development, and with various languages including but not limited to: Python, C++, and JavaScript. Continually aspiring to learn and grow in knowledge.</Box></Typography>
+          </Grid>
+          <Grid item>
+            <Container style={{height: '25px'}}/>
+          </Grid>
+          <Grid item container justify="center">
+            <Avatar style={{height: '250px', width: '250px'}}><PersonIcon/></Avatar>
+          </Grid>
+          <Grid item>
+            <Container style={{height: '10px'}}/>
+          </Grid>
+          
+          <Grid item container justify="center">
+            <Typography variant="h3"><Box letterSpacing='3px' color='white'>LYDIA YANG</Box></Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Container style={{height: '10px'}}/>
+          </Grid>
+          <Grid item container justify="center">
+            <Typography variant="body1"><Box color="white">Software engineer with multiple experiences to support the community. Willing to take any opportunities to improve her skills and knowledge that is applicable to the world. Project-based experience includes with mobile development, web development, and robotics. Several languages that she knows are Python, Java, and Dart.</Box></Typography>
+          </Grid>
+        </Hidden>
       </Grid>
     </Container>
   );
