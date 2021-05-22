@@ -31,6 +31,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import PersonIcon from '@material-ui/icons/Person';
 
 import Brenden from './assets/img/brenden.jpg'
+import Lydia from './assets/img/lydia.png'
 import gh39 from './assets/img/gh39.png';
 
 let theme = createMuiTheme();
@@ -108,7 +109,7 @@ function About() {
             <Avatar src={Brenden} style={{height: '250px', width: '250px'}}/>
           </Grid>
           <Grid item container sm={6} justify="center">
-            <Avatar style={{height: '250px', width: '250px'}}><PersonIcon/></Avatar>
+            <Avatar src={Lydia} style={{height: '250px', width: '250px'}}/>
           </Grid>
           <Grid item xs={12}>
             <Container style={{height: '10px'}}/>
@@ -144,7 +145,7 @@ function About() {
             <Container style={{height: '25px'}}/>
           </Grid>
           <Grid item container justify="center">
-            <Avatar style={{height: '250px', width: '250px'}}><PersonIcon/></Avatar>
+            <Avatar src={Lydia} style={{height: '250px', width: '250px'}}/>
           </Grid>
           <Grid item>
             <Container style={{height: '10px'}}/>
